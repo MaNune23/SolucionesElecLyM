@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nueva Solicitud</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Nueva Solicitud</h1>
+<form action="/requests" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="description" class="form-label">Descripción</label>
+        <input type="text" class="form-control" id="description" name="description" required>
+    </div>
+    <div class="mb-3">
+        <label for="location" class="form-label">Ubicación</label>
+        <input type="text" class="form-control" id="location" name="location" required>
+    </div>
+    <div class="mb-3">
+        <label for="electrician" class="form-label">Seleccionar Electricista</label>
+        <select class="form-select" id="electrician" name="electrician" required>
+            <option value="" disabled selected>-- Selecciona un electricista --</option>
+            <option th:each="electrician : ${electricians}" th:value="${electrician.name}" th:text="${electrician.name}"></option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="image" class="form-label">Subir Imagen</label>
+        <input type="file" class="form-control" id="image" name="image">
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+
+</div>
+</body>
+</html>
+
+

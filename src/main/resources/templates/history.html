@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Historial de Solicitudes</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Historial de Solicitudes</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Descripción</th>
+                <th>Ubicación</th>
+                <th>Estado</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="request : ${requests}">
+                <td th:text="${request.id}"></td>
+                <td th:text="${request.description}"></td>
+                <td th:text="${request.location}"></td>
+                <td th:text="${request.status}"></td>
+                <td th:text="${request.appointmentDate}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

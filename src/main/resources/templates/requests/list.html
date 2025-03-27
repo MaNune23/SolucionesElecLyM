@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Solicitudes</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Solicitudes</h1>
+    <a href="/requests/new" class="btn btn-primary">Nueva Solicitud</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Descripción</th>
+                <th>Ubicación</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="request : ${requests}">
+                <td th:text="${request.id}"></td>
+                <td th:text="${request.description}"></td>
+                <td th:text="${request.location}"></td>
+                <td th:text="${request.status}"></td>
+                <td>
+                    <a th:href="@{'/requests/' + ${request.id}}" class="btn btn-info">Ver</a>
+                    <a th:href="@{'/requests/delete/' + ${request.id}}" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+

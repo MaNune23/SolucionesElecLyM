@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reseñas del Electricista</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Reseñas del Electricista</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Calificación</th>
+                <th>Comentario</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="review : ${reviews}">
+                <td th:text="${review.userId}"></td>
+                <td th:text="${review.rating}"></td>
+                <td th:text="${review.comment}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/electricians" class="btn btn-secondary">Volver a Electricistas</a>
+</div>
+</body>
+</html>
+

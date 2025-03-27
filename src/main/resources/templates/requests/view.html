@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles de la Solicitud</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <h1 class="mb-4">Detalles de la Solicitud</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Solicitud #<span th:text="${request.id}"></span></h5>
+            <p class="card-text">
+                <strong>Descripción:</strong> <span th:text="${request.description}"></span>
+            </p>
+            <p class="card-text">
+                <strong>Electricista:</strong> <span th:text="${request.electrician}"></span>
+            </p>
+            <p class="card-text">
+                <strong>Ubicación:</strong> <span th:text="${request.location}"></span>
+            </p>
+            <p class="card-text">
+                <strong>Estado:</strong> <span th:text="${request.status}"></span>
+            </p>
+            <p class="card-text">
+                <strong>Fecha de la Cita:</strong> <span th:text="${request.appointmentDate}"></span>
+            </p>
+            <p class="card-text">
+                <strong>Imagen de Avería:</strong>
+            </p>
+            <img th:src="@{'/' + ${request.imageUrl}}" alt="Imagen de la solicitud" class="img-fluid" width="400">
+        </div>
+    </div>
+
+    <div class="alert alert-info mt-4">
+        Se ha enviado un correo de confirmación con los detalles de la cita.
+    </div>
+
+    <a href="/requests" class="btn btn-secondary mt-3">Volver a Lista de Solicitudes</a>
+</div>
+</body>
+</html>
