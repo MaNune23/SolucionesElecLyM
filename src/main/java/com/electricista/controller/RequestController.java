@@ -8,10 +8,13 @@ import com.electricista.service.EmailService; // IMPORTANTE: Incluir el servicio
 import com.electricista.service.RequestService;
 import com.electricista.service.ElectricianService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+
 
 import java.io.File;
 import java.io.IOException;
@@ -44,12 +47,17 @@ public class RequestController {
         return "requests/list";
     }
 
-    @GetMapping("/new")
-public String newRequestForm(Model model) {
-    model.addAttribute("request", new Request());
-    model.addAttribute("electricians", electricianService.getAllElectricians()); // Lista de electricistas
-    return "requests/new"; // Asegúrate de que esta plantilla exista
+@GetMapping("/new")
+public String newRequestForm(@RequestParam(value = "service", required = false) String service, Model model) {
+    Request request = new Request();
+    if (service != null) {
+        request.setDescription(service); // Prellenar el campo de descripción
+    }
+    model.addAttribute("request", request);
+    model.addAttribute("electricians", electricianService.getAllElectricians());
+    return "requests/new";
 }
+
 
         @PostMapping
     public String saveRequest(@ModelAttribute Request request, @RequestParam("image") MultipartFile file) throws IOException {
@@ -96,16 +104,25 @@ public String newRequestForm(Model model) {
         return "requests/view";
     }
 
-    @GetMapping("/history")
-    public String viewHistory(Model model) {
-        model.addAttribute("requests", service.getAllRequests());
+     @GetMapping("/history")
+    public String showHistoryPage(Model model) {
+        // Puedes pasar datos dinámicos desde aquí, si es necesario
         return "history";
+    
     }
 
     @GetMapping("/delete/{id}")
     public String deleteRequest(@PathVariable Long id) {
         service.deleteRequest(id);
         return "redirect:/requests";
+    }
+
+
+
+    @GetMapping("/service_request")
+    public String showServiceRequestPage(Model model) {
+        // Puedes agregar lógica aquí si deseas cargar datos dinámicos
+        return "service_request";
     }
 }
 

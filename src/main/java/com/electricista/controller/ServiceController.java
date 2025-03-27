@@ -7,18 +7,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
+
 /**
  *
  * @author joshu
  */
 @Controller
-public class ReviewController {
+public class ServiceController {
 
- @GetMapping("/electricians/reviews")
-public String viewReviews(Model model) {
-    // Aquí podrías agregar lógica para cargar dinámicamente las reseñas
-    return "electricians/reviews";
-}
-
+    @GetMapping("/service_request")
+    public String showServiceRequestPage(Model model) {
+        return "service_request"; // Vincula con la plantilla "service_request.html"
+    }
 }
 

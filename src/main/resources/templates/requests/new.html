@@ -2,37 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Nueva Solicitud</title>
+    <title>Crear Nueva Solicitud</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            font-weight: bold;
+            color: #343a40;
+        }
+        .form-control, .form-select {
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #28a745;
+            border: none;
+            padding: 10px 15px;
+        }
+        .btn-primary:hover {
+            background-color: #218838;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
-    <h1>Nueva Solicitud</h1>
-<form action="/requests" method="post" enctype="multipart/form-data">
-    <div class="mb-3">
-        <label for="description" class="form-label">Descripción</label>
-        <input type="text" class="form-control" id="description" name="description" required>
+    <div class="header">
+        <h1>Crear Nueva Solicitud</h1>
     </div>
-    <div class="mb-3">
-        <label for="location" class="form-label">Ubicación</label>
-        <input type="text" class="form-control" id="location" name="location" required>
-    </div>
-    <div class="mb-3">
-        <label for="electrician" class="form-label">Seleccionar Electricista</label>
-        <select class="form-select" id="electrician" name="electrician" required>
-            <option value="" disabled selected>-- Selecciona un electricista --</option>
-            <option th:each="electrician : ${electricians}" th:value="${electrician.name}" th:text="${electrician.name}"></option>
-        </select>
-    </div>
-    <div class="mb-3">
-        <label for="image" class="form-label">Subir Imagen</label>
-        <input type="file" class="form-control" id="image" name="image">
-    </div>
-    <button type="submit" class="btn btn-primary">Guardar</button>
-</form>
-
+    <form action="/requests" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="description" class="form-label">Descripción</label>
+            <input type="text" class="form-control" id="description" name="description" th:value="${request.description}" required>
+        </div>
+        <div class="form-group">
+            <label for="location" class="form-label">Ubicación</label>
+            <input type="text" class="form-control" id="location" name="location" required>
+        </div>
+        <div class="form-group">
+            <label for="electrician" class="form-label">Seleccionar Electricista</label>
+            <select class="form-select" id="electrician" name="electrician" required>
+                <option value="" disabled selected>-- Selecciona un electricista --</option>
+                <option th:each="electrician : ${electricians}" th:value="${electrician.name}" th:text="${electrician.name}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="image" class="form-label">Subir Imagen</label>
+            <input type="file" class="form-control" id="image" name="image">
+        </div>
+        <button type="submit" class="btn btn-primary">Crear Solicitud</button>
+    </form>
 </div>
 </body>
 </html>
-
-

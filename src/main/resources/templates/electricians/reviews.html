@@ -2,30 +2,104 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Reseñas del Electricista</title>
+    <title>Reseñas de Clientes</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .column {
+            width: 48%;
+        }
+        .review-card {
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .review-card .rating {
+            color: #ffc107;
+            font-size: 16px;
+        }
+        .review-card .type {
+            color: #6c757d;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
-    <h1>Reseñas del Electricista</h1>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Usuario</th>
-                <th>Calificación</th>
-                <th>Comentario</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="review : ${reviews}">
-                <td th:text="${review.userId}"></td>
-                <td th:text="${review.rating}"></td>
-                <td th:text="${review.comment}"></td>
-            </tr>
-        </tbody>
-    </table>
-    <a href="/electricians" class="btn btn-secondary">Volver a Electricistas</a>
+    <div class="header">
+        <h1>Reseñas de Clientes</h1>
+        <p><strong>J&M Soluciones Eléctricas</strong></p>
+    </div>
+
+    <div class="d-flex justify-content-between">
+        <!-- Columna de reseñas positivas -->
+        <div class="column">
+            <h3>Reseñas Positivas</h3>
+
+            <div class="review-card">
+                <div class="rating">★★★★★</div>
+                <h5>Carlos M. – Cliente Residencial</h5>
+                <p class="type">Instalación de iluminación LED</p>
+                <p>"Solicité la instalación de iluminación LED en mi hogar y quedé muy satisfecho con el resultado. El equipo fue puntual, ordenado y explicaron cada paso del proceso. Ahora mi casa consume menos energía y luce increíble. ¡Totalmente recomendado!"</p>
+            </div>
+
+            <div class="review-card">
+                <div class="rating">★★★★★</div>
+                <h5>Ana G. – Cliente Empresarial</h5>
+                <p class="type">Servicio de emergencia</p>
+                <p>"Tuvimos un problema eléctrico en nuestra oficina y llamamos a su servicio de emergencia. En menos de una hora ya estaban en el sitio solucionando el problema. Su atención 24/7 realmente hace la diferencia."</p>
+            </div>
+
+            <div class="review-card">
+                <div class="rating">★★★★★</div>
+                <h5>Fernando R. – Cliente Comercial</h5>
+                <p class="type">Certificación eléctrica</p>
+                <p>"Nos ayudaron con la certificación eléctrica de nuestro local y el proceso fue muy claro y profesional. Cumplen con todas las normativas y nos dieron recomendaciones para mejorar la seguridad."</p>
+            </div>
+        </div>
+
+        <!-- Columna de reseñas negativas -->
+        <div class="column">
+            <h3>Reseñas Negativas</h3>
+
+            <div class="review-card">
+                <div class="rating">★★★☆☆</div>
+                <h5>Lucía P. – Cliente Residencial</h5>
+                <p class="type">Instalación de domótica</p>
+                <p>"Solicité la instalación de domótica en mi casa. El trabajo quedó bien, pero hubo un pequeño retraso en la entrega porque faltaban algunos materiales. A pesar de eso, los técnicos fueron amables y solucionaron todo correctamente."</p>
+            </div>
+
+            <div class="review-card">
+                <div class="rating">★★★☆☆</div>
+                <h5>Javier T. – Cliente Empresarial</h5>
+                <p class="type">Atención al cliente</p>
+                <p>"El servicio en general fue bueno, pero la atención al cliente podría mejorar. Llamé varias veces antes de obtener una respuesta clara sobre mi cotización. Al final hicieron un buen trabajo, pero me gustaría que fueran más rápidos en la comunicación."</p>
+            </div>
+
+            <div class="review-card">
+                <div class="rating">★★★☆☆</div>
+                <h5>María E. – Cliente Residencial</h5>
+                <p class="type">Instalación eléctrica</p>
+                <p>"Agendé un servicio de instalación eléctrica y me confirmaron un horario. Sin embargo, los técnicos llegaron con dos horas de retraso sin avisar. El trabajo quedó bien hecho, pero la falta de puntualidad no me dejó una buena experiencia."</p>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
-

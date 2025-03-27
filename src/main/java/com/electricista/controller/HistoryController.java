@@ -7,18 +7,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
 /**
  *
  * @author joshu
  */
 @Controller
-public class ReviewController {
+public class HistoryController {
 
- @GetMapping("/electricians/reviews")
-public String viewReviews(Model model) {
-    // Aquí podrías agregar lógica para cargar dinámicamente las reseñas
-    return "electricians/reviews";
-}
-
+    @GetMapping("/history")
+    public String showHistoryPage(Model model) {
+        // Puedes pasar datos dinámicos desde aquí, si es necesario
+        return "history";
+    }
 }
 
