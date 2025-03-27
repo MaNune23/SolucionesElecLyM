@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil | Soluciones Eléctricas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 10px 30px;
+        }
+
+        .header img {
+            height: 60px;
+        }
+
+        .user-icon {
+            font-size: 30px;
+            color: #ff6a00;
+        }
+
+        .bienvenida {
+            background-color: #1f9b00;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        .perfil-container {
+            display: flex;
+            justify-content: space-around;
+            padding: 30px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .btn-foto {
+            background-color: #ff6a00;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .btn-foto i {
+            margin-left: 5px;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .menu-perfil {
+            background-color: #2c5a9b;
+            border-radius: 20px;
+            padding: 70px;
+            min-width: 210px;
+        }
+
+        .menu-perfil a {
+            color: white !important;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin: 15px 0;
+        }
+
+        .menu-perfil a:hover {
+            text-decoration: underline;
+        }
+
+        .form-editar {
+            background-color: #ff6a00;
+            border-radius: 10px;
+            padding: 20px;
+            flex: 1;
+            color: white;
+            min-width: 250px;
+        }
+
+        .form-editar input {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .btn-guardar {
+            background-color: #003c8f;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .comentarios {
+            margin: 30px auto;
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 300px;
+        }
+
+        .comentarios i {
+            font-size: 30px;
+            color: #003c8f;
+        }
+
+        .btn-volver {
+            background-color: #1f9b00;
+            color: white;
+            padding: 12px 30px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin: 30px auto 50px;
+            display: block;
+            cursor: pointer;
+        }
+
+        @media (max-width: 900px) {
+            .perfil-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado -->
+    <div class="header">
+        <img src="/img/Logo.png" alt="Logo Soluciones Eléctricas">
+        <i class="fas fa-user-circle user-icon"></i>
+    </div>
+
+    <!-- Bienvenida -->
+    <div class="bienvenida">Hola Bienvenido a tu Perfil</div>
+
+    <!-- Contenido principal -->
+    <div class="perfil-container">
+
+        <!-- Foto de perfil -->
+        <div class="card">
+            <img id="avatarPreview" src="/img/avatar.png" alt="Avatar">
+            <input type="file" id="fileInput" accept="image/*">
+            <br>
+            <button class="btn-foto" onclick="document.getElementById('fileInput').click()">Editar foto de perfil <i class="fas fa-pen"></i></button>
+        </div>
+
+        <!-- Menú lateral -->
+        <div class="menu-perfil">
+            <a href="#">Historial de solicitudes</a>
+            <a href="#">Ayuda</a>
+            <a href="/metodospago">Métodos de Pago</a>
+            <a href="/terminoscondiciones">Términos y Condiciones</a>
+        </div>
+
+        <!-- Formulario de edición -->
+        <div class="form-editar">
+            <h3>Editar Información</h3>
+            <input type="text" id="nombre" name="nombre" placeholder="John Doe">
+            <input type="email" id="correo" name="correo" placeholder="johndoe@gmail.com">
+            <input type="text" id="ubicacion" name="ubicacion" placeholder="San José, Costa Rica">
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento">
+            <button class="btn-guardar">Guardar cambios</button>
+        </div>
+    </div>
+
+    <!-- Comentarios -->
+    <div class="comentarios">
+        <p>Comentarios o reclamos</p>
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <!-- Botón volver -->
+    <a href="/home" style="text-decoration: none;">
+        <button class="btn-volver">Volver al Inicio</button>
+    </a>
+
+    <!-- Script para mostrar previsualización del avatar -->
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const avatarPreview = document.getElementById('avatarPreview');
+
+        fileInput.addEventListener('change', function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    avatarPreview.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+
+</body>
+</html>
