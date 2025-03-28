@@ -15,6 +15,6 @@ import java.util.List;
  */
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Long> {
-    List<Review> findByElectricianId(Long electricianId); // Obtener reseñas por electricista
+    List<Review> findByElectricianId(Long electricianId);
 }
 

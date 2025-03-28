@@ -18,7 +18,7 @@ public class ServiceController {
 
     @GetMapping("/service_request")
     public String showServiceRequestPage(Model model) {
-        return "service_request"; // Vincula con la plantilla "service_request.html"
+        return "service_request";
     }
 }
 

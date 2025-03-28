@@ -17,7 +17,6 @@ public class HistoryController {
 
     @GetMapping("/history")
     public String showHistoryPage(Model model) {
-        // Puedes pasar datos dinámicos desde aquí, si es necesario
         return "history";
     }
 }

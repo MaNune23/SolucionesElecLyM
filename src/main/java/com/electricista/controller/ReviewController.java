@@ -16,7 +16,6 @@ public class ReviewController {
 
  @GetMapping("/electricians/reviews")
 public String viewReviews(Model model) {
-    // Aquí podrías agregar lógica para cargar dinámicamente las reseñas
     return "electricians/reviews";
 }
 

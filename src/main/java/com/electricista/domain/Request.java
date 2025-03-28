@@ -18,7 +18,7 @@ public class Request {
     private Long id;
 
     private String description;
-    private String status = "Pendiente"; // Por defecto
+    private String status = "Pendiente";
     private String location;
     private String electrician;
     private String imageUrl;

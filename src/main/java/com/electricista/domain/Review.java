@@ -16,10 +16,10 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long electricianId; // ID del electricista al que pertenece la reseña
-    private Long userId;        // ID del usuario que hizo la reseña
-    private double rating;      // Calificación del electricista
-    private String comment;     // Comentario sobre el electricista
+    private Long electricianId;
+    private Long userId; 
+    private double rating;  
+    private String comment;   
 
     public Long getId() {
         return id;

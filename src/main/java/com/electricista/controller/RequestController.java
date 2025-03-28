@@ -4,7 +4,7 @@
  */
 package com.electricista.controller;
 import com.electricista.domain.Request;
-import com.electricista.service.EmailService; // IMPORTANTE: Incluir el servicio de correo
+import com.electricista.service.EmailService;
 import com.electricista.service.RequestService;
 import com.electricista.service.ElectricianService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +37,7 @@ public class RequestController {
     private ElectricianService electricianService;
 
     @Autowired
-    private EmailService emailService; // Aquí se inyecta correctamente el servicio
+    private EmailService emailService; 
 
 
 
@@ -51,7 +51,7 @@ public class RequestController {
 public String newRequestForm(@RequestParam(value = "service", required = false) String service, Model model) {
     Request request = new Request();
     if (service != null) {
-        request.setDescription(service); // Prellenar el campo de descripción
+        request.setDescription(service);
     }
     model.addAttribute("request", request);
     model.addAttribute("electricians", electricianService.getAllElectricians());
@@ -106,7 +106,6 @@ public String newRequestForm(@RequestParam(value = "service", required = false) 
 
      @GetMapping("/history")
     public String showHistoryPage(Model model) {
-        // Puedes pasar datos dinámicos desde aquí, si es necesario
         return "history";
     
     }
@@ -121,7 +120,6 @@ public String newRequestForm(@RequestParam(value = "service", required = false) 
 
     @GetMapping("/service_request")
     public String showServiceRequestPage(Model model) {
-        // Puedes agregar lógica aquí si deseas cargar datos dinámicos
         return "service_request";
     }
 }
