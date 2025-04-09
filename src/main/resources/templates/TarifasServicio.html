@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tarifas de servicio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f0f0f0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: white;
+        }
+
+        .logo img {
+            height: 70px;
+        }
+
+        .user-icon {
+            background: #ff7f0e;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: white;
+        }
+
+        .main-title {
+            text-align: center;
+            background: #29b315;
+            color: white;
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .card {
+            padding: 20px;
+            border-radius: 15px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .card.orange {
+            background-color: #ff7f0e;
+        }
+
+        .card.blue {
+            background-color: #033d78;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            margin: 5px 0;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="../static/img/Logo.png" alt="Logo J&M">
+        </div>
+        <div class="user-icon">👤</div>
+    </header>
+
+    <div class="main-title">Tarifas de servicio</div>
+
+    <div class="grid-container">
+        <div class="card orange">
+            <h3>Instalaciones Eléctricas</h3>
+            <p>Instalación de tomacorrientes y apagadores: ₡ 30.000</p>
+            <p>Instalación de cableado eléctrico en casa: ₡ 15.000</p>
+            <p>Panel de distribución: ₡ 40.000</p>
+            <p>Sistema de puesta a tierra: ₡ 100.000</p>
+        </div>
+
+        <div class="card blue">
+            <h3>Servicios de Emergencia</h3>
+            <p>Reparación de cortocircuitos: ₡ 25.000</p>
+            <p>Sustitución de fusibles y breakers: ₡ 35.000</p>
+            <p>Diagnóstico de fallas eléctricas: ₡ 40.000</p>
+        </div>
+
+        <div class="card orange">
+            <h3>Instalación comercial</h3>
+            <p>Instalación de transformadores: ₡ 80.000</p>
+            <p>Instalación de UPS: ₡ 150.000</p>
+            <p>Control eléctrico: ₡ 500.000</p>
+            <p>Mantenimiento preventivo de sistemas eléctricos: ₡ 130.000</p>
+        </div>
+
+        <div class="card blue">
+            <h3>Inspecciones y Certificaciones</h3>
+            <p>Diagnóstico de instalaciones eléctricas: ₡ 50.000</p>
+            <p>Certificación de instalaciones eléctricas: ₡ 160.000</p>
+            <p>Diagnóstico de fallas eléctricas: ₡ 40.000</p>
+        </div>
+    </div>
+
+</body>
+</html>

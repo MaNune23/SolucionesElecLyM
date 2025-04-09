@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Contáctanos - Soluciones Eléctricas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #fff;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    .logo {
+      max-width: 400px;
+    }
+
+    .contact-form {
+      background-color: #ff6f00;
+      color: white;
+      border-radius: 30px;
+      padding: 30px;
+      width: 350px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .contact-form h2 {
+      font-size: 32px;
+      margin-bottom: 25px;
+    }
+
+    label {
+      font-size: 14px;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background-color: #ffb272;
+      margin-bottom: 15px;
+      color: #000;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background-color: #003a84;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #002b63;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+      }
+
+      .logo {
+        margin-bottom: 30px;
+        max-width: 250px;
+      }
+
+      .contact-form {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo de la empresa -->
+  <img src="../static/img/Logo.png" alt="Logo Soluciones Eléctricas" class="logo">
+  <!-- Formulario de contacto -->
+  <div class="contact-form">
+    <h2>Contáctanos</h2>
+    <form>
+      <label for="whatsapp">Whatsapp</label>
+      <input type="text" id="whatsapp" name="whatsapp">
+
+      <label for="facebook">Facebook</label>
+      <input type="text" id="facebook" name="facebook">
+
+      <label for="instagram">Instagram</label>
+      <input type="text" id="instagram" name="instagram">
+
+      <label for="correo">Correo</label>
+      <input type="email" id="correo" name="correo">
+
+      <label for="ubicacion">Ubicación</label>
+      <input type="text" id="ubicacion" name="ubicacion">
+
+      <input type="submit" value="Enviar">
+    </form>
+  </div>
+
+</body>
+</html>

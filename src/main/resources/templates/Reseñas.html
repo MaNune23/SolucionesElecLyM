@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reseñas - Soluciones Eléctricas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #fff;
+      padding: 30px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .header h1 {
+      background-color: #20b000;
+      color: white;
+      display: inline-block;
+      padding: 10px 30px;
+      border-radius: 15px;
+      font-size: 36px;
+    }
+
+    .resenas-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .columna {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      flex: 1;
+      min-width: 300px;
+      max-width: 500px;
+    }
+
+    .resena {
+      border-radius: 20px;
+      padding: 20px;
+      color: white;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .resena.orange {
+      background-color: #ff6f00;
+    }
+
+    .resena.blue {
+      background-color: #003a84;
+    }
+
+    .stars {
+      color: gold;
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    @media (max-width: 900px) {
+      .resenas-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <img src="../static/img/Logo.png" alt="Logo de J&M Soluciones Eléctricas" style="height: 80px; margin-bottom: 10px;">
+  <h1>Reseñas</h1>
+</div>
+
+
+  <div class="resenas-container">
+    <!-- Columna izquierda -->
+    <div class="columna">
+      <div class="resena orange">
+        <div class="stars">⭐ ⭐ ⭐ ⭐ ⭐</div>
+        <strong>Excelentes servicios y atención profesional</strong><br>
+        Carlos M. – Cliente Residencial<br>
+        <p>"Solicité la instalación de iluminación LED en mi hogar y quedé muy satisfecho con el resultado. El equipo fue puntual, ordenado y explicaron cada paso del proceso. ¡Totalmente recomendado!"</p>
+      </div>
+
+      <div class="resena orange">
+        <div class="stars">⭐ ⭐ ⭐ ⭐ ⭐</div>
+        <strong>Rápida respuesta en emergencias</strong><br>
+        Ana G. – Cliente Empresarial<br>
+        <p>"Tuvimos un problema eléctrico en nuestra oficina y llamamos a su servicio de emergencia. En menos de una hora ya estaban en el sitio solucionando el problema."</p>
+      </div>
+
+      <div class="resena orange">
+        <div class="stars">⭐ ⭐ ⭐ ⭐ ⭐</div>
+        <strong>Calidad y garantía en sus servicios</strong><br>
+        Fernando R. – Cliente Comercial<br>
+        <p>"Nos ayudaron con la certificación eléctrica de nuestro local y el proceso fue muy claro y profesional. Cumplen con todas las normativas."</p>
+      </div>
+    </div>
+
+    <!-- Columna derecha -->
+    <div class="columna">
+      <div class="resena blue">
+        <div class="stars">⭐ ⭐ ⭐ ⭐</div>
+        <strong>Buen servicio, pero tardaron un poco más de lo esperado</strong><br>
+        Lucía P. – Cliente Residencial<br>
+        <p>"Solicité la instalación de domótica en mi casa. El trabajo quedó bien, pero hubo un pequeño retraso en la entrega porque faltaban materiales."</p>
+      </div>
+
+      <div class="resena blue">
+        <div class="stars">⭐ ⭐ ⭐</div>
+        <strong>Problemas con la comunicación</strong><br>
+        Javier T. – Cliente Empresarial<br>
+        <p>"El servicio en general fue bueno, pero la atención al cliente podría mejorar. Tardaron en responder mis dudas sobre la cotización."</p>
+      </div>
+
+      <div class="resena blue">
+        <div class="stars">⭐ ⭐</div>
+        <strong>No cumplieron con el horario acordado</strong><br>
+        María E. – Cliente Residencial<br>
+        <p>"Agendé un servicio y confirmaron un horario. Los técnicos llegaron con retraso sin avisar. El trabajo fue bueno, pero me dejó una mala experiencia."</p>
+      </div>
+    </div>
+  </div>
+    
+</body>
+</html>
