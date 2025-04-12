@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Crear Nueva Solicitud</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
         body {
             background-color: #f8f9fa;
@@ -33,7 +34,6 @@
             border: 1px solid #dee2e6;
             border-radius: 5px;
             padding: 10px;
-            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
         }
         .btn-primary {
             background-color: #28a745;
@@ -43,26 +43,64 @@
         .btn-primary:hover {
             background-color: #218838;
         }
+        #map {
+            height: 400px;
+            width: 100%;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
     </style>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        let map, marker;
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const defaultLocation = [9.9281, -84.0907]; // Coordenadas por defecto: San José, Costa Rica
+            map = L.map('map').setView(defaultLocation, 13);
+
+            // Agregar capa de mapa de OpenStreetMap
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            // Agregar marcador
+            marker = L.marker(defaultLocation, { draggable: true }).addTo(map);
+
+            // Actualizar coordenadas al mover el marcador
+            marker.on('dragend', function (e) {
+                const position = marker.getLatLng();
+                document.getElementById('latitude').value = position.lat;
+                document.getElementById('longitude').value = position.lng;
+            });
+        });
+
+        // Mostrar el pop-up de confirmación y redirigir al home
+        function showConfirmationPopup(event) {
+            event.preventDefault(); // Prevenir envío automático del formulario
+            alert("¡Solicitud creada exitosamente!");
+            window.location.href = "/"; // Redirigir a la página de inicio
+        }
+    </script>
 </head>
 <body>
 <div class="container">
     <div class="header">
         <h1>Crear Nueva Solicitud</h1>
     </div>
-    <form action="/requests" method="post" enctype="multipart/form-data">
+    <form action="/requests" method="post" enctype="multipart/form-data" onsubmit="showConfirmationPopup(event)">
         <div class="form-group">
             <label for="description" class="form-label">Descripción</label>
             <input type="text" class="form-control" id="description" name="description" th:value="${request.description}" required>
         </div>
         <div class="form-group">
-            <label for="location" class="form-label">Ubicación</label>
-            <input type="text" class="form-control" id="location" name="location" required>
+            <label for="email" class="form-label">Correo Electrónico</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="tu@email.com" required>
         </div>
         <div class="form-group">
             <label for="electrician" class="form-label">Seleccionar Electricista</label>
-            <select class="form-select" id="electrician" name="electrician" required>
-                <option value="" disabled selected>-- Selecciona un electricista --</option>
+            <select class="form-select" id="electrician" name="electrician">
+                <option value="random" selected>Asignar un electricista aleatorio</option>
                 <option th:each="electrician : ${electricians}" th:value="${electrician.name}" th:text="${electrician.name}"></option>
             </select>
         </div>
@@ -70,6 +108,14 @@
             <label for="image" class="form-label">Subir Imagen</label>
             <input type="file" class="form-control" id="image" name="image">
         </div>
+        <!-- Mapa Interactivo -->
+        <div class="form-group">
+            <label for="map" class="form-label">Ubicación</label>
+            <div id="map"></div>
+        </div>
+        <input type="hidden" id="latitude" name="latitude">
+        <input type="hidden" id="longitude" name="longitude">
+
         <button type="submit" class="btn btn-primary">Crear Solicitud</button>
     </form>
 </div>

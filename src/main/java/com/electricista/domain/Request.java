@@ -22,6 +22,9 @@ public class Request {
     private String location;
     private String electrician;
     private String imageUrl;
+    private double latitude;
+    private double longitude;
+    
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date appointmentDate;
@@ -81,5 +84,21 @@ public class Request {
     public void setAppointmentDate(Date appointmentDate) {
         this.appointmentDate = appointmentDate;
     }
+    public double getLatitude() { // Getter de la latitud
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) { // Setter de la latitud
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() { // Getter de la longitud
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) { // Setter de la longitud
+        this.longitude = longitude;
+    }
+
 
 }

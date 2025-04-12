@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat en Tiempo Real</title>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #chat-container {
+            width: 100%;
+            max-width: 600px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 80vh;
+        }
+        #messages {
+            flex: 1;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        #messages li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-end;
+        }
+        .message-user {
+            justify-content: flex-end;
+        }
+        .message-content {
+            max-width: 70%;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .message-sender {
+            background-color: #e9ecef;
+            color: #333;
+            border-top-left-radius: 0;
+        }
+        .message-user .message-content {
+            background-color: #28a745;
+            color: white;
+            border-top-right-radius: 0;
+        }
+        #form-container {
+            display: flex;
+            align-items: center;
+        }
+        #message {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 20px;
+            margin-right: 10px;
+        }
+        #send {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        #send:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+<div id="chat-container">
+    <ul id="messages"></ul>
+    <form id="form-container">
+        <input id="message" autocomplete="off" placeholder="Escribe un mensaje..." required />
+        <button id="send" type="submit">Enviar</button>
+    </form>
+</div>
+
+<script>
+    const socket = new SockJS('/chat');
+    const stompClient = Stomp.over(socket);
+
+    // Cargar mensajes antiguos al abrir el chat
+    fetch('/api/messages')
+        .then(response => response.json())
+        .then(messages => {
+            messages.forEach(message => addMessage(message.content, 'sender'));
+        });
+
+    stompClient.connect({}, function () {
+        console.log('Conectado al servidor WebSocket');
+
+        stompClient.subscribe('/topic/messages', function (message) {
+            const receivedMessage = JSON.parse(message.body);
+            addMessage(receivedMessage.content, 'sender');
+        });
+    });
+
+    const form = document.getElementById('form-container');
+    const input = document.getElementById('message');
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (input.value) {
+            addMessage(input.value, 'user');
+            stompClient.send('/app/sendMessage', {}, input.value);
+            input.value = '';
+        }
+    });
+
+    function addMessage(text, sender) {
+        const item = document.createElement('li');
+        item.classList.add(sender === 'user' ? 'message-user' : 'message-sender');
+
+        const messageContent = document.createElement('div');
+        messageContent.classList.add('message-content');
+        messageContent.textContent = text;
+
+        item.appendChild(messageContent);
+        messages.appendChild(item);
+        messages.scrollTop = messages.scrollHeight; // Desplaza hacia abajo automáticamente
+    }
+</script>

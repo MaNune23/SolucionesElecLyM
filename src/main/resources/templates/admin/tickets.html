@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Tickets</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 100%;
+            max-width: 900px;
+        }
+        .header {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table th, table td {
+            padding: 12px 15px;
+            border: 1px solid #dee2e6;
+        }
+        table th {
+            background-color: #f1f1f1;
+            text-align: left;
+        }
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        select, button {
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
+        select {
+            border: 1px solid #dee2e6;
+        }
+        button {
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+        .btn-success:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Gestión de Tickets</h1>
+    </div>
+    <form method="get" class="mb-3">
+        <label for="status">Filtrar por estado:</label>
+        <select id="status" name="status" onchange="this.form.submit()">
+            <option value="">Todos</option>
+            <option value="Pendiente">Pendiente</option>
+            <option value="Asignado">Asignado</option>
+            <option value="Resuelto">Resuelto</option>
+        </select>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Descripción</th>
+                <th>Estado</th>
+                <th>Técnico</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="ticket : ${tickets}">
+                <td th:text="${ticket.id}"></td>
+                <td th:text="${ticket.description}"></td>
+                <td th:text="${ticket.status}"></td>
+                <td th:text="${ticket.technician != null ? ticket.technician.name : 'Sin asignar'}"></td>
+                <td>
+                    <form th:action="@{'/admin/tickets/' + ${ticket.id} + '/assign'}" method="post" style="display: inline-block;">
+                        <select name="technicianId">
+                            <option th:each="tech : ${technicians}" th:value="${tech.id}" th:text="${tech.name}"></option>
+                        </select>
+                        <button type="submit" class="btn btn-primary">Asignar</button>
+                    </form>
+                    <form th:action="@{'/admin/tickets/' + ${ticket.id} + '/resolve'}" method="post" style="display: inline-block;">
+                        <button type="submit" class="btn btn-success">Resuelto</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
