@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Lista Electricistas</title>
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <section th:replace="~{electricista/fragmentos :: botonesAgregar}"/>
+        <section th:replace="~{electricista/fragmentos :: agregarElectricista}"/>
+        <section th:replace="~{electricista/fragmentos :: listadoElectricistas}"/>
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+    </body>
+</html>
