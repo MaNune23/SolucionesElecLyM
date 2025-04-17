@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Reportar Calidad de Servicio</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Formulario de Reporte de Calidad de Servicio</h2>
+        <form th:action="@{/problema/guardar}" method="POST" th:object="${reporteProblema}" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre del cliente</label>
+                <input type="text" class="form-control" th:field="*{nombre}" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control" th:field="*{email}" required>
+            </div>
+            <div class="mb-3">
+                <label for="reporte_calidad" class="form-label">Descripción del reporte de calidad de servicio</label>
+                <textarea class="form-control" th:field="*{descripcionCalidad}" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar Reporte</button>
+        </form>
+    </div>
+
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
