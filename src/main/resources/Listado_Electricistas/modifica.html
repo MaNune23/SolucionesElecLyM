@@ -1,17 +1,29 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
-    <head>
-        <title>Soluciones Electricas LyM</title>
-    </head>
-    <body>
-       <header th:replace="~{layout/plantilla :: header}"/>
-         
-        <section th:replace="~{categoria/fragmentos :: editarElectricista}"/>
-         
-         <footer th:replace="~{layout/plantilla :: footer}"/>
-    </body>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Electricista</title>
+</head>
+<body>
+    <h1 th:text="${electricista.idElectrician != null} ? 'Editar Electricista' : 'Nuevo Electricista'"></h1>
+
+    <form th:action="@{/electricista/guardar}" th:object="${electricista}" method="post">
+        <input type="hidden" th:field="*{idElectrician}" />
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" th:field="*{nombre}" required /><br/>
+
+        <label for="especialidad">Especialidad:</label>
+        <input type="text" id="especialidad" th:field="*{especialidad}" required /><br/>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" th:field="*{telefono}" required /><br/>
+
+        <label for="ubicacion">Ubicación:</label>
+        <input type="text" id="ubicacion" th:field="*{ubicacion}" required /><br/>
+
+        <button type="submit">Guardar</button>
+        <a th:href="@{/electricista/listado}">Cancelar</a>
+    </form>
+</body>
 </html>

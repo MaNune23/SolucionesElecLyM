@@ -1,20 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-package Controller;
+package ProyectoFinal.Controller;
 
 /**
  *
- * @author gaelg
+ * @author maria
  */
-import com.tienda.domain.ReporteProblema;
-import com.tienda.service.ReporteProblemaService;
+
+
+import ProyectoFinal.formulario.domain.ReporteProblema;
+import ProyectoFinal.Service.ReporteProblemaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
 
 @Controller
 @RequestMapping("/problema")
@@ -25,12 +22,13 @@ public class ReporteProblemaController {
 
     @GetMapping("/formulario")
     public String mostrarFormulario(ReporteProblema reporteProblema) {
-        return "/problema/formularioProblema";
+        return "Calidad/ReporteProblema"; // Verificá que exista esta vista HTML
     }
 
     @PostMapping("/guardar")
-    public String guardarReporte(ReporteProblema reporteProblema) {
+    public String guardarReporte(@ModelAttribute ReporteProblema reporteProblema, Model model) {
         problemaService.save(reporteProblema);
+        model.addAttribute("mensaje", "Reporte de problema guardado exitosamente.");
         return "redirect:/";
     }
 }

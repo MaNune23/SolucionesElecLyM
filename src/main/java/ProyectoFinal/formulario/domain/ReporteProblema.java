@@ -1,32 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+package ProyectoFinal.formulario.domain;
 
-package formulario.domain;
-
-/**
- *
- * @author gaelg
- */
 import jakarta.persistence.*;
-import java.io.Serializable;
 import lombok.Data;
 
-@Data
 @Entity
-@Table(name = "reporte_problema")
-public class ReporteProblema implements Serializable {
+@Data
+public class ReporteProblema {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idReporte;
+    private Long id;
 
-    private String nombre;
-    private String email;
-
-    @Column(name = "descripcion_problema", columnDefinition = "TEXT")
-    private String descripcionProblema;
-
-    private boolean atendido = false;
+    private String tipo;
+    private String descripcion;
+    private String urgencia;
 }

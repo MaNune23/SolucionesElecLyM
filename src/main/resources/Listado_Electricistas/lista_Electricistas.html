@@ -1,16 +1,41 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
-    <head th:replace="~{layout/plantilla :: head}">
-        <title>Lista Electricistas</title>
-    </head>
-    <body>
-        <header th:replace="~{layout/plantilla :: header}"/>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Electricistas</title>
+</head>
+<body>
+    <h1>Listado de Electricistas</h1>
 
-        <section th:replace="~{electricista/fragmentos :: botonesAgregar}"/>
-        <section th:replace="~{electricista/fragmentos :: agregarElectricista}"/>
-        <section th:replace="~{electricista/fragmentos :: listadoElectricistas}"/>
+    <p>Total registrados: <span th:text="${totalElectricistas}"></span></p>
 
-        <footer th:replace="~{layout/plantilla :: footer}"/>
-    </body>
+    <a th:href="@{/electricista/nuevo}">Agregar Nuevo Electricista</a>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Especialidad</th>
+                <th>Teléfono</th>
+                <th>Ubicación</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="electricista : ${electricistas}">
+                <td th:text="${electricista.idElectrician}"></td>
+                <td th:text="${electricista.nombre}"></td>
+                <td th:text="${electricista.especialidad}"></td>
+                <td th:text="${electricista.telefono}"></td>
+                <td th:text="${electricista.ubicacion}"></td>
+                <td>
+                    <a th:href="@{/electricista/modificar/{id}(id=${electricista.idElectrician})}">Editar</a>
+                    |
+                    <a th:href="@{/electricista/eliminar/{id}(id=${electricista.idElectrician})}" onclick="return confirm('¿Deseas eliminar este electricista?')">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
 </html>

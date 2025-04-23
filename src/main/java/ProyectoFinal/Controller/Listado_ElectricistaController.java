@@ -1,62 +1,52 @@
-package Historias_Usuario;
+package ProyectoFinal.Controller;
 
-import com.tienda.domain.Electricista;
-import com.tienda.service.ElectricistaService;
-import com.tienda.service.impl.FirebaseStorageServiceImpl;
+import com.electricista.domain.Electrician;
+import com.electricista.service.ElectricianService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/electricista")
 public class Listado_ElectricistaController {
 
     @Autowired
-    private ElectricistaService electricistaService;
-
-    @Autowired
-    private FirebaseStorageServiceImpl firebaseStorageService;
+    private ElectricianService electricianService;
 
     @GetMapping("/listado")
-    private String listado(Model model) {
-        var electricistas = electricistaService.getElectricistas(false);
+    public String listado(Model model) {
+        var electricistas = electricianService.getElectricistas(false);
         model.addAttribute("electricistas", electricistas);
         model.addAttribute("totalElectricistas", electricistas.size());
-        return "/electricista/listado";
+        return "Listado_Electricistas/lista_Electricistas";
     }
 
     @GetMapping("/nuevo")
-    public String electricistaNuevo(Electricista electricista) {
-        return "/electricista/modifica";
+    public String electricistaNuevo(Electrician electrician) {
+        return "Listado_Electricistas/modifica";
     }
 
     @PostMapping("/guardar")
-    public String electricistaGuardar(Electricista electricista,
-                                      @RequestParam("imagenFile") MultipartFile imagenFile) {
-        if (!imagenFile.isEmpty()) {
-            electricistaService.save(electricista);
-            electricista.setRutaImagen(
-                    firebaseStorageService.cargaImagen(
-                            imagenFile,
-                            "electricista",
-                            electricista.getIdElectricista()));
-        }
-        electricistaService.save(electricista);
+    public String electricistaGuardar(Electrician electrician) {
+        electricianService.save(electrician);
         return "redirect:/electricista/listado";
     }
 
-    @GetMapping("/eliminar/{idElectricista}")
-    public String electricistaEliminar(Electricista electricista) {
-        electricistaService.delete(electricista);
+    @GetMapping("/eliminar/{idElectrician}")
+    public String electricistaEliminar(@PathVariable Long idElectrician) {
+        Electrician temp = new Electrician();
+        temp.setIdElectrician(idElectrician);
+        electricianService.delete(temp);
         return "redirect:/electricista/listado";
     }
 
-    @GetMapping("/modificar/{idElectricista}")
-    public String electricistaModificar(Electricista electricista, Model model) {
-        electricista = electricistaService.getElectricista(electricista);
-        model.addAttribute("electricista", electricista);
-        return "/electricista/modifica";
+    @GetMapping("/modificar/{idElectrician}")
+    public String electricistaModificar(@PathVariable Long idElectrician, Model model) {
+        Electrician temp = new Electrician();
+        temp.setIdElectrician(idElectrician);
+        Electrician electrician = electricianService.getElectricista(temp);
+        model.addAttribute("electricista", electrician);
+        return "Listado_Electricistas/modifica";
     }
 }
