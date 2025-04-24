@@ -35,5 +35,16 @@ public class PaginasController {
     public String mostrarProyectos() {
         return "nuestrosproyectos"; // archivo: nuestrosproyectos.html en templates
     }
+    
+        @GetMapping("/Seguimiento")
+    public String mostrarSeguimiento() {
+        return "Seguimiento"; 
+    }
+    
+      @GetMapping("/history")
+    public String mostrarhistory() {
+        return "history"; 
+    }
+    
 
 }
