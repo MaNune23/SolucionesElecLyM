@@ -29,7 +29,7 @@ public class RequestController {
     private RequestService service;
 
     @Autowired
-    private ElectricianSimpleService electricianService; // ✅ Corrección aquí
+    private ElectricianSimpleService electricianService; //
 
     @Autowired
     private EmailService emailService;
@@ -47,7 +47,7 @@ public class RequestController {
             request.setDescription(service);
         }
         model.addAttribute("request", request);
-        model.addAttribute("electricians", electricianService.getAllElectricians()); // ✅ Método válido ahora
+        model.addAttribute("electricians", electricianService.getAllElectricians()); //
         return "requests/new";
     }
 
