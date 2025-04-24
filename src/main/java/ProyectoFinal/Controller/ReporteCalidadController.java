@@ -4,8 +4,6 @@ package ProyectoFinal.Controller;
  *
  * @author maria
  */
-
-
 import ProyectoFinal.formulario.domain.ReporteCalidad;
 import ProyectoFinal.Service.ReporteCalidadService;
 import org.springframework.beans.factory.annotation.Autowired;

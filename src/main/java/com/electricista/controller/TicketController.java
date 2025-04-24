@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.electricista.controller;
+
 import com.electricista.domain.Ticket;
 import com.electricista.domain.Electrician;
 import com.electricista.dao.TicketRepository;

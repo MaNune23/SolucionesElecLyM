@@ -8,16 +8,16 @@ package com.electricista.service;
  *
  * @author maria
  */
-
-
 import com.electricista.domain.Electrician;
 import java.util.List;
 
 public interface ElectricianService {
+
     List<Electrician> getElectricistas(boolean activos);
+
     void save(Electrician electrician);
+
     void delete(Electrician electrician);
+
     Electrician getElectricista(Electrician electrician);
 }
-
-

@@ -11,14 +11,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
-
 /**
  *
  * @author joshu
  */
 @Service
 public class RequestService {
+
     @Autowired
     private RequestRepository repository;
 
@@ -38,6 +37,3 @@ public class RequestService {
         repository.deleteById(id);
     }
 }
-
-
-

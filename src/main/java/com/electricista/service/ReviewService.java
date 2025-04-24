@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
 /**
  *
  * @author joshu
  */
 @Service
 public class ReviewService {
+
     @Autowired
     private ReviewRepository repository;
 
@@ -29,4 +29,3 @@ public class ReviewService {
         return repository.save(review);
     }
 }
-

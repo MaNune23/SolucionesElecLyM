@@ -14,7 +14,6 @@ public class Electrician {
     private int reviewsCount = 0;
 
     // Métodos getter y setter
-
     public Long getIdElectrician() {
         return idElectrician;
     }

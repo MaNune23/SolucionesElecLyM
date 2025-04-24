@@ -12,14 +12,15 @@ import jakarta.persistence.*;
  */
 @Entity
 public class Review {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long electricianId;
-    private Long userId; 
-    private double rating;  
-    private String comment;   
+    private Long userId;
+    private double rating;
+    private String comment;
 
     public Long getId() {
         return id;
